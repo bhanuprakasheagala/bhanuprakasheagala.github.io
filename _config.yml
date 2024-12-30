@@ -4,22 +4,13 @@ description: "Bhanuprakash Eagala" # This will show up in places like twitter, l
 
 # Email / Social media user names used by the minima theme:
 # All of these are optional and can be removed or commented out
-email: "example@mail.com"
-twitter_username: "twitteruser"
-github_username: "githubuser"
-linkedin_username: "linkedinuser"
-#facebook_username: username
-#flickr_username: username
-#instagram_username: username
-#pinterest_username: username
-#youtube_username: username
-#googleplus_username: +username
+github_username: "bhanuprakasheagala"
+linkedin_username: "bhanuprakasheagala"
 
 #########################################################################################
 ######### Nothing below needs to be changed (unless you know what you're doing) #########
 #########################################################################################
-theme: "minima"
-
+theme: jekyll-theme-minimal
 rss: rss
 
 kramdown:
