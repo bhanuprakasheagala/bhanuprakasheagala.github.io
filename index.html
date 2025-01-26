@@ -3,183 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhanuprakash Eagala</title>
+    <title>Bhanuprakash Eagala - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            perspective: 1000px;
         }
 
         header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: #fff;
             text-align: center;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        header img {
-            width: 150px;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            margin-bottom: 20px;
+            margin-bottom: 50px;
         }
 
         header h1 {
-            font-size: 2.8em;
-            margin: 10px 0;
-            animation: fadeIn 2s;
+            font-size: 3.5em;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        header h3 {
+        header p {
             font-size: 1.5em;
-            margin-top: 10px;
+            margin: 10px 0;
+            animation: fadeIn 3s ease-in-out;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-
-        section {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        section h2 {
-            font-size: 2em;
-            color: #3498db;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #3498db;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .content-grid {
+        .nav-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
+            width: 80%;
+            max-width: 800px;
+            animation: slideIn 1.5s ease-out;
         }
 
-        .card {
-            background-color: #ecf0f1;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: #2c3e50;
-            font-size: 1.8em;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: #3498db;
-        }
-
-        footer {
-            background-color: #2c3e50;
+        .nav-card {
+            background: rgba(255, 255, 255, 0.2);
             color: #fff;
+            border-radius: 15px;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 40px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-card h2 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .nav-card i {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #f1c40f;
+            animation: bounce 1.5s infinite;
+        }
+
+        .nav-card:hover i {
+            animation: rotate 1s linear infinite;
+        }
+
+        .nav-card::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: transform 0.5s;
+            pointer-events: none;
+        }
+
+        .nav-card:active::after {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://media.giphy.com/media/zhYSVCirREeIZtONCI/giphy.gif" alt="Profile Picture">
-        <h1>Hi 👋, I'm Bhanuprakash Eagala</h1>
-        <h3>A passionate developer with expertise in system programming</h3>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="myposts.html">Posts</a>
-        </nav>
+        <h1>Hi, I'm Bhanuprakash Eagala</h1>
+        <p>Welcome to my portfolio</p>
     </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>I’m a Computer Science and Engineering graduate with a strong passion for system programming and problem-solving with over 4 years of experience in Software Development. Currently, I'm channeling my skills as a C/C++ Developer in the automotive industry in the ADAS (Advanced Driver Assistance Systems) domain. With a strong foundation in system programming, I am continually enhancing my expertise by exploring new technologies and frameworks. At present, I am delving into Python and the GTest framework to broaden my skill set and improve my development capabilities.</p>
-    </section>
-
-    <section>
-        <h2>Skills</h2>
-        <div class="content-grid">
-            <div class="card">
-                <strong>Programming Languages:</strong>
-                <p>C, C++, Python</p>
-            </div>
-            <div class="card">
-                <strong>Operating Systems:</strong>
-                <p>Linux Internals, OS principles</p>
-            </div>
-            <div class="card">
-                <strong>Networking:</strong>
-                <p>Layered Architecture, Socket Programming</p>
-            </div>
-            <div class="card">
-                <strong>Tools:</strong>
-                <p>Git, GTest, Coverity, Jenkins, AWS Cloud</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Connect with Me</h2>
-        <div class="social-icons">
-            <a href="https://linkedin.com/in/bhanuprakasheagala/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://hashnode.com/@bhanuprakasheagala" target="_blank"><i class="fab fa-hashnode"></i></a>
-            <a href="https://www.codechef.com/users/sharp_cipher" target="_blank"><i class="fas fa-code"></i></a>
-            <a href="https://www.hackerrank.com/bhanu_thelearner" target="_blank"><i class="fab fa-hackerrank"></i></a>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Bhanuprakash Eagala. All rights reserved.</p>
-    </footer>
+    <div class="nav-cards">
+        <a href="about.html" class="nav-card">
+            <i class="fas fa-user"></i>
+            <h2>About</h2>
+        </a>
+        <a href="myposts.html" class="nav-card">
+            <i class="fas fa-book"></i>
+            <h2>Posts</h2>
+        </a>
+        <a href="experience.html" class="nav-card">
+            <i class="fas fa-briefcase"></i>
+            <h2>Experience</h2>
+        </a>
+        <a href="contact.html" class="nav-card">
+            <i class="fas fa-envelope"></i>
+            <h2>Contact</h2>
+        </a>
+    </div>
 </body>
 </html>
