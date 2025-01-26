@@ -56,6 +56,39 @@
             margin-top: 10px;
         }
 
+        .card {
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-item i {
+            font-size: 1.5em;
+            color: #3498db;
+        }
+        
         nav {
             display: flex;
             justify-content: center;
@@ -194,31 +227,65 @@
 
     <section>
         <h2>About Me</h2>
-        <p>I’m a Computer Science and Engineering graduate with a strong passion for system programming and problem-solving with over 4 years of experience in Software Development. Currently, I'm channeling my skills as a C/C++ Developer in the automotive industry in the ADAS (Advanced Driver Assistance Systems) domain. With a strong foundation in system programming, I am continually enhancing my expertise by exploring new technologies and frameworks. At present, I am delving into Python and the GTest framework to broaden my skill set and improve my development capabilities.</p>
+        <p>Hi! I’m Bhanuprakash, a passionate developer with over 4 years of experience in building software that drives innovation. My journey started with a deep curiosity about how things work at the system level, and this has evolved into a career focused on developing robust solutions for the automotive industry, specifically in ADAS (Advanced Driver Assistance Systems).</p>
+        
+        <p>I’m skilled in C/C++ programming, but my curiosity doesn’t stop there. I’m constantly exploring new technologies like Python and the GTest framework to broaden my horizons and stay on top of emerging trends. Here’s a bit more about my professional expertise:</p>
+        
+        <h3>Current Focus: Automotive Software Development</h3>
+        <p>Currently, I am working as a C/C++ Developer in the automotive industry, specializing in ADAS, where precision and performance matter. I develop software that enhances driver safety through advanced technologies, always aiming to make an impact with every line of code I write.</p>
+        
+        <h3>Learning and Growing</h3>
+        <p>My journey in system programming has been thrilling, but I’m always looking to learn more. I’m diving into Python and GTest to better handle testing frameworks, improving code quality, and enhancing my overall development process.</p>
+        
+        <p>On top of all this, I’m passionate about problem-solving and always strive to find elegant solutions to complex challenges. I’m excited for what the future holds and constantly look for opportunities to contribute to impactful projects.</p>
     </section>
 
     <section>
         <h2>Skills</h2>
         <div class="content-grid">
+            <!-- Programming Languages -->
             <div class="card">
-                <strong>Programming Languages:</strong>
-                <p>C, C++, Python</p>
+                <h4>Programming Languages</h4>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <i class="fab fa-cuttlefish"></i> C
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python"></i> Python
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-java"></i> C++
+                    </div>
+                </div>
             </div>
+    
+            <!-- Tools -->
             <div class="card">
-                <strong>Operating Systems:</strong>
-                <p>Linux Internals, OS principles</p>
+                <h4>Tools & Frameworks</h4>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <i class="fab fa-github"></i> Git
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-cloud"></i> AWS Cloud
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-jenkins"></i> Jenkins
+                    </div>
+                </div>
             </div>
+    
+            <!-- Operating Systems -->
             <div class="card">
-                <strong>Networking:</strong>
-                <p>Layered Architecture, Socket Programming</p>
-            </div>
-            <div class="card">
-                <strong>Tools:</strong>
-                <p>Git, GTest, Coverity, Jenkins, AWS Cloud</p>
+                <h4>Operating Systems</h4>
+                <div class="skills-list">
+                    <div class="skill-item">Linux Internals</div>
+                    <div class="skill-item">Windows Internals</div>
+                </div>
             </div>
         </div>
     </section>
-
+    
     <section>
         <h2>Connect with Me</h2>
         <div class="social-icons">
