@@ -13,90 +13,51 @@
             background: linear-gradient(135deg, #2c3e50, #3498db);
             color: #fff;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             height: 100vh;
+            padding: 0 10%;
             overflow: hidden;
-            perspective: 1000px;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 50px;
+        .intro {
+            text-align: left;
         }
 
-        header h1 {
-            font-size: 3.5em;
+        .intro p:first-child {
+            font-size: 1.2em;
             margin: 0;
+        }
+
+        .intro h1 {
+            font-size: 3.5em;
+            margin: 10px 0;
             animation: fadeIn 2s ease-in-out;
         }
 
-        header p {
-            font-size: 1.5em;
-            margin: 10px 0;
-            animation: fadeIn 3s ease-in-out;
+        .menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
         }
 
-        .nav-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            width: 80%;
-            max-width: 800px;
-            animation: slideIn 1.5s ease-out;
-        }
-
-        .nav-card {
-            background: rgba(255, 255, 255, 0.2);
+        .menu a {
+            text-decoration: none;
             color: #fff;
-            border-radius: 15px;
-            text-align: center;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
         }
 
-        .nav-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-card h2 {
-            margin: 0;
-            font-size: 1.8em;
-        }
-
-        .nav-card i {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #f1c40f;
-            animation: bounce 1.5s infinite;
-        }
-
-        .nav-card:hover i {
-            animation: rotate 1s linear infinite;
-        }
-
-        .nav-card::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translate(-50%, -50%) scale(0);
-            border-radius: 50%;
-            transition: transform 0.5s;
-            pointer-events: none;
-        }
-
-        .nav-card:active::after {
-            transform: translate(-50%, -50%) scale(1);
+        .menu a:hover {
+            background: #f1c40f;
+            transform: translateY(-5px);
         }
 
         @keyframes fadeIn {
@@ -109,60 +70,19 @@
                 transform: translateY(0);
             }
         }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Hi, I'm Bhanuprakash Eagala</h1>
-        <p>Welcome to my portfolio</p>
-    </header>
+    <div class="intro">
+        <p>Hi, I am</p>
+        <h1>Bhanuprakash Eagala</h1>
+    </div>
 
-    <div class="nav-cards">
-        <a href="about.html" class="nav-card">
-            <i class="fas fa-user"></i>
-            <h2>About</h2>
-        </a>
-        <a href="myposts.html" class="nav-card">
-            <i class="fas fa-book"></i>
-            <h2>Posts</h2>
-        </a>
-        <a href="experience.html" class="nav-card">
-            <i class="fas fa-briefcase"></i>
-            <h2>Experience</h2>
-        </a>
-        <a href="contact.html" class="nav-card">
-            <i class="fas fa-envelope"></i>
-            <h2>Contact</h2>
-        </a>
+    <div class="menu">
+        <a href="about.html">About</a>
+        <a href="myposts.html">Posts</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
     </div>
 </body>
 </html>
