@@ -10,64 +10,73 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: #fff;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
             height: 100vh;
-            padding: 0 10%;
             overflow: hidden;
         }
 
         .intro {
-            text-align: left;
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        .intro p:first-child {
-            font-size: 1.2em;
+        .intro p {
+            font-size: 1.5em;
             margin: 0;
+            color: #f1c40f;
         }
 
         .intro h1 {
-            font-size: 3.5em;
+            font-size: 4em;
             margin: 10px 0;
-            animation: fadeIn 2s ease-in-out;
+            color: #fff;
+            animation: glow 2s infinite alternate;
         }
 
         .menu {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 15px;
+            gap: 20px;
         }
 
         .menu a {
             text-decoration: none;
             color: #fff;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
             border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             font-size: 1.2em;
             font-weight: bold;
-            transition: background 0.3s, transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
         }
 
         .menu a:hover {
             background: #f1c40f;
-            transform: translateY(-5px);
+            transform: scale(1.1);
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #f1c40f, 0 0 20px #f39c12;
+            }
+            to {
+                text-shadow: 0 0 20px #f39c12, 0 0 30px #e67e22;
             }
         }
     </style>
@@ -86,3 +95,4 @@
     </div>
 </body>
 </html>
+
