@@ -67,75 +67,90 @@
             border-radius: 5px;
         }
 
-        /* Main content */
-        .content {
-            margin-left: 270px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: url('https://source.unsplash.com/1600x900/?office,workspace') center/cover;
-            color: white;
-            text-align: center;
-            height: 100vh;
-            position: relative;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .hero {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-        }
-
-        .hero h1 {
-            font-size: 3.5em;
-            margin: 10px 0;
-        }
-
-        .hero p {
-            font-size: 1.5em;
-            opacity: 0.9;
-        }
-
-        .buttons {
+        .sidebar .social-icons {
             margin-top: 20px;
         }
 
-        .buttons a {
-            text-decoration: none;
+        .sidebar .social-icons a {
             color: white;
-            background: #f39c12;
-            padding: 14px 24px;
-            border-radius: 25px;
-            margin: 10px;
-            font-size: 1.2em;
-            transition: 0.3s;
+            font-size: 1.5em;
+            margin: 0 10px;
         }
 
-        .buttons a:hover {
-            background: #e67e22;
+        /* Main content */
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            font-size: 1.2em;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skills, .projects, .contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .skill, .project, .contact-item {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: calc(33.333% - 40px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .skill i, .project i, .contact-item i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .skill h3, .project h3, .contact-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .skill p, .project p, .contact-item p {
+            font-size: 1em;
+            opacity: 0.8;
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .skill, .project, .contact-item {
+                width: calc(50% - 40px);
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 width: 220px;
             }
+
             .content {
                 margin-left: 220px;
             }
-            .hero h1 {
-                font-size: 2.8em;
+
+            .skill, .project, .contact-item {
+                width: calc(50% - 40px);
             }
         }
 
@@ -144,19 +159,14 @@
                 width: 200px;
                 padding: 15px;
             }
+
             .content {
                 margin-left: 200px;
                 padding: 15px;
             }
-            .hero h1 {
-                font-size: 2.2em;
-            }
-            .hero p {
-                font-size: 1.2em;
-            }
-            .buttons a {
-                font-size: 1em;
-                padding: 12px 20px;
+
+            .skill, .project, .contact-item {
+                width: calc(100% - 40px);
             }
         }
     </style>
@@ -168,21 +178,85 @@
         <p>I'm a Developer</p>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
     </div>
 
     <div class="content">
-        <div class="overlay"></div>
-        <div class="hero">
-            <h1>Hello, I'm a Freelancer</h1>
-            <p>I'm a Full-Stack Web Developer with extensive experience</p>
-            <div class="buttons">
-                <a href="#">Portfolio</a>
-                <a href="#">Hire Me</a>
+        <div class="section" id="about">
+            <h1>About Me</h1>
+            <p>Hello! I'm Bhanuprakash Eagala, a passionate Full-Stack Web Developer with extensive experience in creating dynamic and responsive websites.</p>
+        </div>
+
+        <div class="section" id="skills">
+            <h1>My Skills</h1>
+            <div class="skills">
+                <div class="skill">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                    <p>Expert in HTML5, semantic markup, and accessibility.</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                    <p>Proficient in CSS3, Flexbox, Grid, and responsive design.</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Skilled in JavaScript ES6+, DOM manipulation, and frameworks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="projects">
+            <h1>My Projects</h1>
+            <div class="projects">
+                <div class="project">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Project One</h3>
+                    <p>Details about the project and the technologies used.</p>
+                </div>
+                <div class="project">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Project Two</h3>
+                    <p>Details about the project and the technologies used.</p>
+                </div>
+                <div class="project">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Project Three</h3>
+                    <p>Details about the project and the technologies used.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="contact">
+            <h1>Contact Me</h1>
+            <div class="contact">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>your.email@example.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+123 456 7890</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Your City, Your Country</p>
+                </div>
             </div>
         </div>
     </div>
