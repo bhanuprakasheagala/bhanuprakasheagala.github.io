@@ -3,113 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhanuprakash Eagala - Portfolio</title>
+    <title>Portfolio - Bhanuprakash Eagala</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* General styles */
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            display: flex;
             height: 100vh;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+        }
+        .sidebar {
+            width: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+        }
+        .sidebar img {
+            width: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .sidebar h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .sidebar nav {
+            margin-top: 20px;
+        }
+        .sidebar nav a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            transition: 0.3s;
+        }
+        .sidebar nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            color: #fff;
-            overflow: hidden;
+            background: url('https://source.unsplash.com/1600x900/?technology,developer') no-repeat center/cover;
+            position: relative;
         }
-
-        /* Animated Background */
-        @keyframes bgAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
         }
-
-        /* Glassmorphism Container */
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 2s ease-in-out;
+        .hero {
+            position: relative;
+            z-index: 1;
         }
-
-        /* Intro section */
-        .intro h1 {
-            font-size: 3.5em;
-            background: linear-gradient(to right, #f9d423, #ff4e50);
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: glow 2s infinite alternate;
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
         }
-
-        .intro p {
-            font-size: 1.5em;
+        .hero p {
+            font-size: 1.2em;
             margin-bottom: 20px;
+        }
+        .hero .buttons a {
+            text-decoration: none;
+            color: white;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 25px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-portfolio {
+            background: #f39c12;
+        }
+        .btn-hire {
+            background: #3498db;
+        }
+        .btn-portfolio:hover, .btn-hire:hover {
             opacity: 0.8;
         }
-
-        /* Navigation Buttons */
-        .menu {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .menu a:hover {
-            background: linear-gradient(135deg, #f9d423, #ff4e50);
-            transform: translateY(-5px);
-            box-shadow: 0px 10px 20px rgba(255, 100, 50, 0.5);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #f9d423, 0 0 20px #ff4e50; }
-            to { text-shadow: 0 0 20px #ff4e50, 0 0 40px #f9d423; }
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .intro h1 { font-size: 2.5em; }
-            .menu { flex-direction: column; gap: 10px; }
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+            .content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="intro">
-            <p>Hi, I am</p>
-            <h1>Bhanuprakash Eagala</h1>
-        </div>
-
-        <div class="menu">
+    <div class="sidebar">
+        <img src="https://via.placeholder.com/80" alt="Profile Picture">
+        <h2>Bhanuprakash Eagala</h2>
+        <p>I'm a Developer</p>
+        <nav>
+            <a href="#">Home</a>
             <a href="about.html">About</a>
-            <a href="myposts.html">Posts</a>
             <a href="experience.html">Experience</a>
-            <a href="contact.html">Contact</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="clients.html">Clients</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="overlay"></div>
+        <div class="hero">
+            <h1>Hello, My Name is <b>Bhanuprakash</b></h1>
+            <p>I'm a Full-Stack Developer with expertise in creating stunning web applications.</p>
+            <div class="buttons">
+                <a href="portfolio.html" class="btn-portfolio">Portfolio</a>
+                <a href="contact.html" class="btn-hire">Hire Me</a>
+            </div>
         </div>
     </div>
 </body>
