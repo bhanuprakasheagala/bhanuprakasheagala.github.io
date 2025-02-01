@@ -4,164 +4,318 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhanuprakash Eagala - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Previous CSS styles remain exactly the same -->
     <style>
-        /* Reset body and apply general styles */
-        body {
-            font-family: 'Arial', sans-serif;
+        /* All the CSS from the modern portfolio template remains exactly the same */
+        :root {
+            --primary: #4A00E0;
+            --secondary: #8E2DE2;
+            --text: #2c2c2c;
+            --light: #f8f9fa;
+            --sidebar-width: 240px;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #ff6f61, #ff9a8b, #f2e2e2);
-            background-size: 400% 400%;
-            animation: gradientBackground 15s ease infinite;
-            color: #fff;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 2rem;
+            color: white;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .profile-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-circle::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 0;
+        }
+
+        .nav-link i {
+            margin-right: 1rem;
+            width: 20px;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .hero-section {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 0 4rem;
+            position: relative;
             overflow: hidden;
-            text-align: center;
         }
 
-        /* Animation for gradient background */
-        @keyframes gradientBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transform: rotate(-45deg);
+            opacity: 0.1;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphing 15s ease-in-out infinite;
         }
 
-        /* Intro section styling */
-        .intro {
-            margin-bottom: 50px;
-            animation: fadeIn 2s ease-in-out;
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
         }
 
-        .intro h1 {
-            font-size: 4.5em;
-            margin: 10px 0;
-            color: #fff;
-            background-image: linear-gradient(to left, #f1c40f, #e67e22);
-            background-clip: text;
+        .hero-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
-            animation: glow 2s infinite alternate, bounce 1s infinite;
+            -webkit-text-fill-color: transparent;
+            position: relative;
         }
 
-        .intro p {
-            font-size: 1.5em;
-            margin: 0;
-            color: #fff;
-            opacity: 0.8;
-            letter-spacing: 2px;
-            animation: fadeIn 2s ease-in-out;
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            position: relative;
         }
 
-        /* Button/Menu styling */
-        .menu {
-            display: flex;
-            gap: 30px;
-            margin-top: 20px;
-            animation: fadeIn 3s ease-in-out;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px 30px;
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
             border-radius: 30px;
-            font-size: 1.2em;
+            text-decoration: none;
             font-weight: bold;
-            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .menu a:hover {
-            background: linear-gradient(135deg, #f1c40f, #e67e22);
-            transform: translateY(-10px);
-            box-shadow: 0px 10px 30px rgba(255, 165, 0, 0.5);
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: -1;
         }
 
-        /* Animations for fading and glowing */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .btn:hover::before {
+            width: 100%;
         }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #f1c40f, 0 0 20px #f39c12;
-            }
-            to {
-                text-shadow: 0 0 20px #f39c12, 0 0 40px #e67e22;
-            }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            margin-right: 1rem;
         }
 
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
-        /* Media Queries for responsive design */
+        .social-links {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .social-link:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
         @media (max-width: 768px) {
-            .intro h1 {
-                font-size: 3em;
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 1000;
             }
-
-            .intro p {
-                font-size: 1.2em;
+            .main-content {
+                margin-left: 0;
             }
-
-            .menu {
-                flex-direction: column;
-                gap: 15px;
+            .hero-section {
+                padding: 0 2rem;
             }
-
-            .menu a {
-                padding: 12px 20px;
-                font-size: 1.1em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .intro h1 {
-                font-size: 2.5em;
-            }
-
-            .intro p {
-                font-size: 1em;
-            }
-
-            .menu a {
-                padding: 10px 18px;
-                font-size: 0.9em;
+            .hero-subtitle {
+                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="intro">
-        <p>Hi, I am</p>
-        <h1>Bhanuprakash Eagala</h1>
-    </div>
+    <aside class="sidebar">
+        <div class="profile-section">
+            <div class="profile-circle"></div>
+            <h2 class="profile-name">Bhanuprakash Eagala</h2>
+            <p class="profile-title">Developer</p>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="experience.html" class="nav-link">
+                        <i class="fas fa-briefcase"></i>
+                        Experience
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="myposts.html" class="nav-link">
+                        <i class="fas fa-blog"></i>
+                        Posts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-    <div class="menu">
-        <a href="about.html">About</a>
-        <a href="myposts.html">Posts</a>
-        <a href="experience.html">Experience</a>
-        <a href="contact.html">Contact</a>
-    </div>
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <h1 class="hero-title">Hi, I am</h1>
+            <h2 class="hero-subtitle">Bhanuprakash Eagala</h2>
+            <p class="hero-description">
+                Developer with a passion for creating elegant, efficient, and user-friendly solutions.
+            </p>
+            <div class="button-group">
+                <a href="about.html" class="btn btn-primary">About Me</a>
+                <a href="contact.html" class="btn btn-outline">Contact</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
