@@ -3,262 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Bhanuprakash Eagala</title>
+    <title>Bhanuprakash Eagala - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Reset body and apply general styles */
         body {
-            margin: 0;
             font-family: 'Arial', sans-serif;
-            display: flex;
-            height: 100vh;
-            background: #f4f4f4;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 270px;
-            background: #2c3e50;
-            color: white;
-            padding: 20px;
-            position: fixed;
-            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff6f61, #ff9a8b, #f2e2e2);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            color: #fff;
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-
-        .sidebar img {
-            width: 120px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
-        .sidebar h2 {
-            font-size: 1.5em;
-            margin: 10px 0 5px;
-        }
-
-        .sidebar p {
-            font-size: 1.1em;
-            opacity: 0.8;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-            width: 100%;
-        }
-
-        .sidebar ul li {
-            padding: 12px;
-            text-align: center;
-        }
-
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            font-size: 1.2em;
-        }
-
-        .sidebar ul li a:hover {
-            background: #34495e;
-            border-radius: 5px;
-        }
-
-        .sidebar .social-icons {
-            margin-top: 20px;
-        }
-
-        .sidebar .social-icons a {
-            color: white;
-            font-size: 1.5em;
-            margin: 0 10px;
-        }
-
-        /* Main content */
-        .content {
-            margin-left: 270px;
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section h1 {
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .section p {
-            font-size: 1.2em;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .skills, .projects, .contact {
-            display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .skill, .project, .contact-item {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 20px;
-            width: calc(33.333% - 40px);
-            box-sizing: border-box;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
             text-align: center;
         }
 
-        .skill i, .project i, .contact-item i {
-            font-size: 2em;
-            margin-bottom: 10px;
+        /* Animation for gradient background */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .skill h3, .project h3, .contact-item h3 {
+        /* Intro section styling */
+        .intro {
+            margin-bottom: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .intro h1 {
+            font-size: 4.5em;
+            margin: 10px 0;
+            color: #fff;
+            background-image: linear-gradient(to left, #f1c40f, #e67e22);
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: glow 2s infinite alternate, bounce 1s infinite;
+        }
+
+        .intro p {
             font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .skill p, .project p, .contact-item p {
-            font-size: 1em;
+            margin: 0;
+            color: #fff;
             opacity: 0.8;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .skill, .project, .contact-item {
-                width: calc(50% - 40px);
+        /* Button/Menu styling */
+        .menu {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu a:hover {
+            background: linear-gradient(135deg, #f1c40f, #e67e22);
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 30px rgba(255, 165, 0, 0.5);
+        }
+
+        /* Animations for fading and glowing */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #f1c40f, 0 0 20px #f39c12;
+            }
+            to {
+                text-shadow: 0 0 20px #f39c12, 0 0 40px #e67e22;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries for responsive design */
         @media (max-width: 768px) {
-            .sidebar {
-                width: 220px;
+            .intro h1 {
+                font-size: 3em;
             }
 
-            .content {
-                margin-left: 220px;
+            .intro p {
+                font-size: 1.2em;
             }
 
-            .skill, .project, .contact-item {
-                width: calc(50% - 40px);
+            .menu {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu a {
+                padding: 12px 20px;
+                font-size: 1.1em;
             }
         }
 
-        @media (max-width: 600px) {
-            .sidebar {
-                width: 200px;
-                padding: 15px;
+        @media (max-width: 480px) {
+            .intro h1 {
+                font-size: 2.5em;
             }
 
-            .content {
-                margin-left: 200px;
-                padding: 15px;
+            .intro p {
+                font-size: 1em;
             }
 
-            .skill, .project, .contact-item {
-                width: calc(100% - 40px);
+            .menu a {
+                padding: 10px 18px;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <img src="https://via.placeholder.com/120" alt="Profile Picture">
-        <h2>Bhanuprakash Eagala</h2>
-        <p>I'm a Developer</p>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Skills</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-        </div>
+    <div class="intro">
+        <p>Hi, I am</p>
+        <h1>Bhanuprakash Eagala</h1>
     </div>
 
-    <div class="content">
-        <div class="section" id="about">
-            <h1>About Me</h1>
-            <p>Hello! I'm Bhanuprakash Eagala, a passionate Full-Stack Web Developer with extensive experience in creating dynamic and responsive websites.</p>
-        </div>
-
-        <div class="section" id="skills">
-            <h1>My Skills</h1>
-            <div class="skills">
-                <div class="skill">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML</h3>
-                    <p>Expert in HTML5, semantic markup, and accessibility.</p>
-                </div>
-                <div class="skill">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS</h3>
-                    <p>Proficient in CSS3, Flexbox, Grid, and responsive design.</p>
-                </div>
-                <div class="skill">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                    <p>Skilled in JavaScript ES6+, DOM manipulation, and frameworks.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section" id="projects">
-            <h1>My Projects</h1>
-            <div class="projects">
-                <div class="project">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3>Project One</h3>
-                    <p>Details about the project and the technologies used.</p>
-                </div>
-                <div class="project">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3>Project Two</h3>
-                    <p>Details about the project and the technologies used.</p>
-                </div>
-                <div class="project">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3>Project Three</h3>
-                    <p>Details about the project and the technologies used.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section" id="contact">
-            <h1>Contact Me</h1>
-            <div class="contact">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>your.email@example.com</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <h3>Phone</h3>
-                    <p>+123 456 7890</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Location</h3>
-                    <p>Your City, Your Country</p>
-                </div>
-            </div>
-        </div>
+    <div class="menu">
+        <a href="about.html">About</a>
+        <a href="myposts.html">Posts</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
     </div>
 </body>
 </html>
