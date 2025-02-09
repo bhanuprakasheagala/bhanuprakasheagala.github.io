@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhanuprakash Eagala - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Previous CSS styles remain exactly the same -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
-        /* All the CSS from the modern portfolio template remains exactly the same */
         :root {
             --primary: #4A00E0;
             --secondary: #8E2DE2;
             --text: #2c2c2c;
             --light: #f8f9fa;
-            --sidebar-width: 240px;
         }
         
         * {
@@ -21,114 +19,84 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background: var(--light);
-            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        .sidebar {
+        /* Navigation */
+        .navbar {
             position: fixed;
-            left: 0;
             top: 0;
-            height: 100vh;
-            width: var(--sidebar-width);
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 2rem;
-            color: white;
-        }
-
-        .profile-section {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .profile-circle {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-circle::before {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .nav-menu {
+            display: flex;
+            gap: 2rem;
             list-style: none;
         }
 
-        .nav-item {
-            margin-bottom: 0.5rem;
-        }
-
         .nav-link {
-            display: flex;
-            align-items: center;
             text-decoration: none;
-            color: white;
-            padding: 0.8rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
 
-        .nav-link::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover::before {
+            width: 0;
+            height: 2px;
+            bottom: -5px;
             left: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
         }
 
-        .nav-link i {
-            margin-right: 1rem;
-            width: 20px;
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        .main-content {
-            margin-left: var(--sidebar-width);
-            padding: 2rem;
+        /* Sections */
+        section {
             min-height: 100vh;
-            position: relative;
+            padding: 6rem 2rem 2rem;
         }
 
-        .hero-section {
-            height: 100vh;
+        /* Home Section */
+        #home {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 4rem;
             position: relative;
             overflow: hidden;
+            animation: fadeIn 2s ease-out;
         }
 
-        .hero-section::before {
+        #home::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -139,22 +107,21 @@
             transform: rotate(-45deg);
             opacity: 0.1;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: morphing 15s ease-in-out infinite;
         }
 
-        @keyframes morphing {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            animation: slideInFromBottom 1s ease-out;
         }
 
         .hero-title {
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
-            position: relative;
+            animation: fadeIn 1s ease-out;
         }
 
         .hero-subtitle {
@@ -163,159 +130,818 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            position: relative;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .hero-description {
             font-size: 1.2rem;
             color: var(--text);
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            position: relative;
+            animation: fadeIn 2s ease-out;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes morphing {
+            0% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            50% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+        }
+    
+        /* Enhanced About Section */
+        #about {
+            background: white;
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
 
-        .btn::before {
+        #about::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            z-index: -1;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, rgba(74, 0, 224, 0.03), rgba(142, 45, 226, 0.03));
+            animation: rotate 30s linear infinite;
         }
 
-        .btn:hover::before {
+        .about-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* .about-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 2rem;
+        } */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .about-details {
+            flex: 2;
+            max-width: 800px;
+        }
+
+        .about-description {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             width: 100%;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            margin-right: 1rem;
+        .about-description p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            animation: fadeIn 1s ease-out;
+            width: 100%;
         }
 
-        .btn-outline {
-            background: transparent;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                width: 0;
+            }
+            to {
+                width: 50px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .profile-section {
+            flex: 1;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            position: relative;
+            background: #ddd;
+            overflow: hidden;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--primary), var(--secondary)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderRotate 5s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .skills-section {
+            padding: 0;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h3 {
             color: var(--primary);
-            border: 2px solid var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .skill-info h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .skill-info p {
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        .about-description {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-description p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        #projects h2 {
+            margin-bottom: 3rem; /* Add more space after the heading */
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            min-height: 250px; /* Increase the length of the project cards */
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .status.in-progress {
+            color: yellow;
+        }
+
+        .status.completed {
+            color: lightgreen;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .github-link:hover {
+            color: #ddd;
+        }
+
+        .github-link i {
+            margin-right: 0.5rem;
+        }
+
+        /* Enhanced Work Section with Timeline */
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            width: 100%;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            width: calc(50% - 3rem);
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            transform-origin: left center;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            transform-origin: right center;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            transform: translate(-50%, 0);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: rgba(74, 0, 224, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: 0;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: -8rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            right: -8rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .timeline-description {
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .social-links {
-            position: absolute;
-            bottom: 2rem;
-            left: 0;
-            width: 100%;
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .social-link {
             color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            opacity: 0.8;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
         .social-link:hover {
-            opacity: 1;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
+        /* Animated Background */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .animated-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(74, 0, 224, 0.1);
+            animation: move 25s linear infinite;
+            border-radius: 50%;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(100vh) scale(0);
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+            }
+        }        
+
+        /* Scroll Animations */
+        .fade-up-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .fade-up-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 1s ease;
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 1s ease;
+        }
+
+        .slide-in-left.active,
+        .slide-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Updated Navigation */
+        .nav-menu {
+            gap: 3rem;
+        }
+
+        /* Mobile Responsive Adjustments */
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                z-index: 1000;
+            .timeline::before {
+                left: 2rem;
             }
-            .main-content {
-                margin-left: 0;
+
+            .timeline-content {
+                width: calc(100% - 4rem);
+                margin-left: 4rem !important;
             }
-            .hero-section {
-                padding: 0 2rem;
+
+            .timeline-dot {
+                left: 2rem;
             }
-            .hero-subtitle {
-                font-size: 3rem;
+
+            .timeline-date {
+                position: relative;
+                left: 0 !important;
+                right: 0 !important;
+                margin-bottom: 1rem;
+                display: inline-block;
             }
         }
     </style>
 </head>
+
 <body>
-    <aside class="sidebar">
-        <div class="profile-section">
-            <div class="profile-circle"></div>
-            <h2 class="profile-name">Bhanuprakash Eagala</h2>
-            <p class="profile-title">Developer</p>
-        </div>
-        
-        <nav>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">
-                        <i class="fas fa-home"></i>
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">
-                        <i class="fas fa-user"></i>
-                        About
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="experience.html" class="nav-link">
-                        <i class="fas fa-briefcase"></i>
-                        Experience
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="myposts.html" class="nav-link">
-                        <i class="fas fa-blog"></i>
-                        Posts
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">
-                        <i class="fas fa-envelope"></i>
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </nav>
+    <nav class="navbar">
+        <div class="logo">BE</div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#work" class="nav-link">Work</a></li>
+            <li><a href="https://bhanuprakasheagala.hashnode.dev" class="nav-link" target="_blank">MyBlog</a></li>
+        </ul>
+    </nav>
 
-        <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </aside>
-
-    <main class="main-content">
-        <section class="hero-section">
+    <section id="home">
+        <div class="hero-content">
             <h1 class="hero-title">Hi, I am</h1>
             <h2 class="hero-subtitle">Bhanuprakash Eagala</h2>
             <p class="hero-description">
-                Developer with a passion for creating elegant, efficient, and user-friendly solutions.
+                Welcome to my portfolio page.
             </p>
-            <div class="button-group">
-                <a href="about.html" class="btn btn-primary">About Me</a>
-                <a href="contact.html" class="btn btn-outline">Contact</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title fade-up-scroll">About Me</h2>
+        <div class="about-content">
+            <div class="profile-section" data-aos="fade-right">
+                <div class="profile-image"></div>
+                <h3>Bhanuprakash Eagala</h3>
+                <p>Computer Science and Programming</p>
+                <div class="about-description fade-up-scroll">
+                    <p>Passionate about technology and innovation, I thrive on solving complex problems and creating impactful solutions. With a background in computer science, I am dedicated to continuous learning and growth in the ever-evolving tech landscape.</p>
+                </div>
             </div>
-        </section>
-    </main>
+            <div class="about-details">
+                <div class="skills-section" data-aos="fade-left">
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        <div class="skill-grid">
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>C++ Programming</h4>
+                                    <p>Experienced in Embedded and Modern C++ programming with a focus on developing high-performance applications. Continuously exploring and learning more advanced concepts.</p>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>C Programming</h4>
+                                    <p>Proficient in C programming with a strong understanding of low-level system programming.</p>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>Operating Systems and Linux Internals</h4>
+                                    <p>Knowledgeable in operating systems concepts and implementation.</p>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>Communication and Networks</h4>
+                                    <p>Experienced in network protocols and communication systems.</p>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>Core Python</h4>
+                                    <p>Basics of Python programming and core concepts. Using python as a tool for automation and scripting.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Other Skills</h3>
+                        <div class="skill-grid">
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>Git</h4>
+                                    <p>Proficient in version control using Git.</p>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>ADAS Knowledge</h4>
+                                    <p>Understanding of Advanced Driver Assistance Systems (ADAS).</p>
+                                </div>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <h4>Embedded Systems</h4>
+                                    <p>Experience in developing and programming embedded systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 data-aos="fade-up">Personal Projects</h2>
+        <div class="projects-container">
+            <div class="project-card" data-aos="zoom-in">
+                <h3>Custom Memory Allocator</h3>
+                <p>This is a small hobby project where I use sbrk system call in linux for custom allocation and deallocation of heap memory, In C programming.</p>
+                <p>Status: <span class="status completed">Completed</span></p>
+                <a href="https://github.com/bhanuprakasheagala/MyCodingProjects/tree/bhanuprakash_eagala/MemoryManagerForC" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i> View on My GitHub
+                </a>
+            </div>
+            <div class="project-card" data-aos="zoom-in">
+                <h3>C++ Interpreter for Lox</h3>
+                <p>This is my hobby project to implement a full-fledged interpreter in C++ for the toy language named Lox from the book Crafting Interpreters by Robert Nystrom.</p>
+                <p>Status: <span class="status in-progress">In-Progress</span></p>
+                <a href="https://github.com/bhanuprakasheagala/litecode" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i> View on My GitHub
+                </a>
+            </div>
+            <div class="project-card" data-aos="zoom-in">
+                <h3>HTTP Server</h3>
+                <p>This is a simple HTTP server implementation in C++ which supports basic http methods, handles multiple client connections, and parse http headers to generate appropriate responses.</p>
+                <p>Status: <span class="status completed">Completed</span></p>
+                <a href="https://github.com/yourusername/multi-threaded-task-scheduler" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i> View on My GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <div class="animated-bg">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <h2 class="section-title fade-up-scroll">Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content slide-in-right">
+                    <div class="timeline-date">2024 - Present</div>
+                    <h3 class="timeline-title">Embedded Software Developer</h3>
+                    <p class="timeline-description">
+                        Working as a C++ developer and focusing on improving my debugging skills.
+                        Also, getting my hands on Python scripting for automation.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content slide-in-left">
+                    <div class="timeline-date">2022 - 2024</div>
+                    <h3 class="timeline-title">Embedded Software Developer</h3>
+                    <p class="timeline-description">
+                        Worked as an Embedded Software Developer focusing on
+                        C/C++ development for an AUTOSAR-based ADAS project.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content slide-in-right">
+                    <div class="timeline-date">2020 - 2022</div>
+                    <h3 class="timeline-title">Assistant System Engineer</h3>
+                    <p class="timeline-description">
+                        Started career as a front-end developer working with React.
+                        Contributed to the development of responsive web applications.
+                        Collaborated with UX team to implement pixel-perfect designs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Let's Connect</h3>
+            <div class="social-links">
+                <a href="https://github.com/bhanuprakasheagala" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/bhanuprakasheagala/" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://hashnode.com/@BhanuprakashEagala" class="social-link" target="_blank">
+                    <i class="fas fa-blog"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Add animated background elements
+        const animatedBg = document.querySelector('.animated-bg');
+        for (let i = 0; i < 5; i++) {
+            const span = document.createElement('span');
+            span.style.left = Math.random() * 100 + '%';
+            span.style.animationDelay = Math.random() * 5 + 's';
+            animatedBg.appendChild(span);
+        }
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.fade-up-scroll, .slide-in-left, .slide-in-right');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight * 0.8;
+                
+                if (elementTop < triggerPoint) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+    </script>
 </body>
 </html>
