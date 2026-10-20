@@ -803,56 +803,6 @@
             transform: translateX(0);
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .js-enabled .fade-up-scroll,
-            .js-enabled .slide-in-left,
-            .js-enabled .slide-in-right,
-            [data-aos] {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            #home::before,
-            .profile-image::after,
-            .experience-marker::after,
-            .skill-card:hover .skill-icon {
-                animation: none !important;
-            }
-
-            .hero-cta:hover,
-            .hero-cta-secondary:hover,
-            .skill-card:hover,
-            .project-card:hover,
-            .experience-card:hover,
-            .social-link:hover {
-                transform: none !important;
-                translate: none !important;
-                scale: 1 !important;
-            }
-
-            .project-card:hover {
-                background: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            }
-
-            .skill-card:hover {
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .experience-card:hover {
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            }
-        }
-
         /* Updated Navigation */
         .nav-menu {
             gap: 3rem;

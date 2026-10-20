@@ -1,8 +1,6 @@
 document.documentElement.classList.add('js-enabled');
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-if (!prefersReducedMotion && window.AOS) {
+if (window.AOS) {
     window.AOS.init({
         duration: 1000,
         once: true
@@ -51,7 +49,7 @@ function revealPassedElements() {
     });
 }
 
-if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+if (!('IntersectionObserver' in window)) {
     revealElements.forEach(element => element.classList.add('active'));
 } else {
     revealObserver = new IntersectionObserver(entries => {
