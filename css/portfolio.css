@@ -489,15 +489,20 @@
         }
 
         .status {
+            display: inline-block;
+            padding: 0.15rem 0.55rem;
+            border-radius: 999px;
             font-weight: bold;
         }
 
         .status.in-progress {
-            color: white;
+            color: #713F12;
+            background: #FEF3C7;
         }
 
         .status.completed {
-            color: white;
+            color: #166534;
+            background: #DCFCE7;
         }
 
         .github-link {
