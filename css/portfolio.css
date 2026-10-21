@@ -1069,27 +1069,3 @@
                 gap: 1.5rem;
             }
         }
-
-        @media (prefers-reduced-motion: reduce) {
-            #home,
-            #home::before,
-            #home::after,
-            #home .hero-content,
-            #home .hero-title,
-            #home .hero-title::after,
-            #home .hero-subtitle,
-            #home .hero-description,
-            #home .hero-description::after,
-            #home .hero-actions,
-            #home .hero-cta,
-            #home .hero-cta::after,
-            #home .hero-cta-secondary {
-                animation: none;
-                transition: none;
-            }
-
-            #home .hero-cta:hover,
-            #home .hero-cta-secondary:hover {
-                transform: none;
-            }
-        }
