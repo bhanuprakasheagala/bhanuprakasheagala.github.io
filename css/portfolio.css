@@ -380,21 +380,6 @@
             margin: 0 auto;
         }
 
-        .about-description {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            width: 100%;
-        }
-
-        .about-description p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text);
-            margin-bottom: 1rem;
-        }
         .section-title {
             text-align: center;
             font-size: 2.5rem;
@@ -560,19 +545,63 @@
         .about-description {
             max-width: 800px;
             margin: 2rem auto 0;
-            text-align: center;
+            text-align: left;
             position: relative;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            isolation: isolate;
+            overflow: hidden;
+            padding: 2.25rem clamp(1.5rem, 4vw, 2.5rem);
+            border: 1px solid rgba(106, 61, 194, 0.15);
+            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(249, 246, 255, 0.96));
+            box-shadow: 0 18px 45px rgba(45, 26, 85, 0.08), 0 3px 10px rgba(45, 26, 85, 0.04);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .about-description::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: clamp(1.5rem, 4vw, 2.5rem);
+            width: 3.5rem;
+            height: 4px;
+            border-radius: 0 0 4px 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .about-description::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: -6rem;
+            right: -5rem;
+            width: 16rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(142, 45, 226, 0.1), transparent 68%);
+            pointer-events: none;
+        }
+
+        .about-description:hover {
+            border-color: rgba(106, 61, 194, 0.25);
+            box-shadow: 0 22px 50px rgba(45, 26, 85, 0.11), 0 4px 12px rgba(45, 26, 85, 0.05);
         }
 
         .about-description p {
-            font-size: 1.2rem;
+            position: relative;
+            font-size: 1.05rem;
             line-height: 1.8;
             color: var(--text);
-            margin-bottom: 1rem;
+            margin: 0;
+        }
+
+        .about-description p + p {
+            margin-top: 1rem;
+        }
+
+        .about-description p:first-child {
+            color: #3e2b59;
+            font-size: 1.18rem;
+            font-weight: 600;
         }
 
         /* Projects Section */
