@@ -19,7 +19,7 @@
                             <div class="skill-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
                             <div class="skill-info">
                                 <h4>Modern C++</h4>
-                                <p>C++ is my primary language for system-level and embedded development. I use modern language features and the standard library to organize code, manage complexity, and build maintainable software.</p>
+                                <p>In eTraceGen, I use C++20 to process kernel-event telemetry through a modular userspace pipeline. Modern C++ and the standard library help keep each stage clear while staying mindful of performance and resource costs.</p>
                                 <div class="skill-tags" aria-label="Related skills">
                                     <span>C++17/20</span><span>STL</span><span>Embedded C++</span>
                                 </div>
@@ -29,7 +29,7 @@
                             <div class="skill-icon"><i class="fas fa-terminal" aria-hidden="true"></i></div>
                             <div class="skill-info">
                                 <h4>C &amp; Memory Management</h4>
-                                <p>C gives me a direct way to work close to the machine. It has strengthened how I reason about memory, object lifetimes, and resource constraints when building low-level software.</p>
+                                <p>My custom allocator project uses C and <code>sbrk</code> to explore how heap memory is obtained and managed. Building one makes allocation, deallocation, and memory-use trade-offs concrete.</p>
                                 <div class="skill-tags" aria-label="Related skills">
                                     <span>C programming</span><span>Memory management</span><span>Resource constraints</span>
                                 </div>
@@ -39,7 +39,7 @@
                             <div class="skill-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
                             <div class="skill-info">
                                 <h4>Linux &amp; OS Internals</h4>
-                                <p>Exploring Linux internals and POSIX interfaces helps me understand how an operating system manages processes and resources. I’m also building my knowledge of virtualization and hypervisors.</p>
+                                <p>In Vishaya, I capture a target process and its descendants into a verifiable evidence bundle. It’s a practical way to explore Linux process behavior and turn system activity into something that can be inspected and reasoned about.</p>
                                 <div class="skill-tags" aria-label="Related skills">
                                     <span>Linux internals</span><span>POSIX APIs</span><span>Virtualization</span><span>Hypervisors</span>
                                 </div>
@@ -48,10 +48,10 @@
                         <article class="skill-card">
                             <div class="skill-icon"><i class="fas fa-diagram-project" aria-hidden="true"></i></div>
                             <div class="skill-info">
-                                <h4>Concurrency &amp; IPC</h4>
-                                <p>I’m interested in how threads and processes coordinate work, communicate, and share resources. Understanding concurrency and inter-process communication is essential to reasoning about responsive, reliable system software.</p>
+                                <h4>Concurrency &amp; Multithreaded Systems</h4>
+                                <p>Modern CPUs have multiple cores, but contention can waste that parallel capacity. In a network server, independent client requests are natural units of work: concurrency helps them progress without one slow request stalling others. IPC coordinates work across process boundaries.</p>
                                 <div class="skill-tags" aria-label="Related skills">
-                                    <span>Concurrent systems</span><span>Multithreading</span><span>IPC</span>
+                                    <span>Multithreading</span><span>Concurrent systems</span><span>IPC</span>
                                 </div>
                             </div>
                         </article>
@@ -59,7 +59,7 @@
                             <div class="skill-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
                             <div class="skill-info">
                                 <h4>Networking &amp; Protocols</h4>
-                                <p>Socket programming helps me work with network communication from the application side. I’m extending that understanding across TCP/IP and the link and network layers, and exploring Apple’s framework for network-aware software.</p>
+                                <p>Network behavior spans layers: sockets expose application-level communication, while TCP/IP and L2/L3 explain how data travels between hosts. Apple Network Extension APIs let macOS software work with network traffic closer to the system.</p>
                                 <div class="skill-tags" aria-label="Related skills">
                                     <span>Socket programming</span><span>TCP/IP</span><span>L2/L3 protocols</span><span>Apple Network Extension</span>
                                 </div>
@@ -69,7 +69,7 @@
                             <div class="skill-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
                             <div class="skill-info">
                                 <h4>Embedded Systems</h4>
-                                <p>Embedded development brings software closer to hardware, where communication and resource constraints matter. These protocols and RTOS fundamentals help me understand how software interacts with devices.</p>
+                                <p>On a device, timing and protocol details are part of program behavior. CAN, UART, SPI, and I²C connect software to hardware; RTOS fundamentals help me reason about task scheduling and response time.</p>
                                 <div class="skill-tags" aria-label="Related skills">
                                     <span>CAN</span><span>UART</span><span>SPI</span><span>I²C</span><span>RTOS fundamentals</span>
                                 </div>
@@ -79,7 +79,7 @@
                             <div class="skill-icon"><i class="fas fa-vial" aria-hidden="true"></i></div>
                             <div class="skill-info">
                                 <h4>Testing &amp; Code Quality</h4>
-                                <p>I use automated tests and static analysis to catch defects early and improve confidence in low-level code. Applying coding guidelines also helps keep software consistent and maintainable.</p>
+                                <p>In low-level software, a successful build alone can’t expose every edge case or risky pattern. Google Test helps exercise behavior; Coverity and MISRA practices help surface defects and keep code disciplined.</p>
                                 <div class="skill-tags" aria-label="Related skills">
                                     <span>Google Test</span><span>Coverity</span><span>Static analysis</span><span>MISRA guidelines</span>
                                 </div>
@@ -89,7 +89,7 @@
                             <div class="skill-icon"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></div>
                             <div class="skill-info">
                                 <h4>Developer Tools &amp; Scripting</h4>
-                                <p>I use scripting to automate repeatable tasks, build tools to compile and test software, and debuggers to trace behavior from a local environment to a target. SQL and PostgreSQL round out my experience with data.</p>
+                                <p>Python and Bash turn repeatable checks into workflows; GCC and CMake build the code, while GDB and Trace32 help trace failures from source to target. SQL and PostgreSQL support working with structured data.</p>
                                 <div class="skill-tags" aria-label="Related skills">
                                     <span>Python</span><span>Bash</span><span>SQL</span><span>Git</span><span>GCC</span><span>CMake</span><span>GDB</span><span>Trace32</span><span>PostgreSQL</span>
                                 </div>
